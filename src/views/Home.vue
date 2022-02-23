@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img class ="vulo" alt="Vue logo" src="../assets/WORLD.png">
   </div>
 </template>
 
@@ -16,3 +15,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.vulo{
+  padding-top: 150px !important;
+}
+
+
+</style>
