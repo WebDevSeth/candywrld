@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
-    <router-link to="/">HOME</router-link> |
-    <router-link to="/about">LOGIN</router-link>
+    
+   
   </div>
   <router-view/>
+  
 </template>
 
 <style>
@@ -14,6 +15,7 @@
   text-align: center;
   color: #2c3e50;
 }
+
 
 *{
   background-color: #FF66C4 !important;
@@ -31,4 +33,9 @@
 #nav a.router-link-exact-active {
   color: #5CE1E6;
 }
+
+#app {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
 </style>
