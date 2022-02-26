@@ -1,6 +1,5 @@
 <template>
   <form @submit.prevent="register" class="form neu-border">
-
     <input
       class="form-input neu-border-inset"
       type="text"
@@ -29,7 +28,7 @@
       placeholder="Password"
       required
     />
-    <button type="submit" class="form-btn neu-border">Register new member</button>
+    <button type="submit" class="form-btn neu-border">Register</button>
     <!-- <div class="form-social-login">
       <button class="form-btn neu-border form-social-btn">
         <i class="fab fa-google"></i>

@@ -1,14 +1,12 @@
 <template>
-<nav>
- <router-link class="but" to="/">HOME</router-link>
- </nav>
+  <nav>
+    <router-link class="but" to="/">HOME</router-link>
+  </nav>
 
- <br>
- <br>
+  <br />
+  <br />
 
   <div class="Login">
-
-    
     <form @submit.prevent="login" class="form neu-border">
       <h2 class="form-heading"></h2>
       <input
@@ -23,8 +21,8 @@
         v-model="password"
         placeholder="Password"
       />
-      <router-link class ="form-btn neu-border " to="/Products">
-      <button type="submit" class="form-btn ">Login</button>
+      <router-link class="form-btn neu-border" to="/Products">
+        <button type="submit" class="form-btn">Login</button>
       </router-link>
 
       <!-- <div class="form-social-login">
@@ -36,12 +34,10 @@
       </button>
     </div> -->
 
-    
-<p>
- Not a member?
-      <router-link to="/Register">Register</router-link> </p>
-     
-    
+      <p>
+        Not a member?
+        <router-link to="/Register">Register</router-link>
+      </p>
     </form>
   </div>
 </template>
@@ -101,7 +97,6 @@ export default {
   margin-inline: auto;
   max-width: 600px;
   font-size: 25px;
-
 }
 
 .form-heading {
@@ -143,12 +138,10 @@ export default {
 }
 
 .form-btn {
-  background-color: #5CE1E6 !important;
+  background-color: #5ce1e6 !important;
 }
 
 .but:hover {
   color: yellow !important;
 }
-
-
 </style>
