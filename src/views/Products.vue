@@ -1,10 +1,9 @@
 <template>
-   <router-link class="but" to="/Login">SIGN OUT</router-link>
-
+<nav>
+   <router-link class="but" to="/Login">EXIT CANDY WORLD</router-link>
+</nav>
    <div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-         Add a product
-      </button>
+      
       <div class="d-flex w-25 ms-3">
          <label for="" class="form-label">Sort by category</label>
 
@@ -31,6 +30,12 @@
             <option value="descending">Descending</option>
          </select>
       </div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Add a product
+      </button>
+       <button type="button" class="btn btn-primary" >
+         Cart
+      </button>
    </div>
    <br />
    <hr />
@@ -88,31 +93,7 @@
 </template>
 
 <script>
-   export default {
-      mounted() {
-         // CREATE
-         function createProduct() {
-            let title = document.querySelector("#addTitle").value;
-            let category = document.querySelector("#addCategory").value;
-            let price = document.querySelector("#addPrice").value;
-            let img = document.querySelector("#addImg").value;
 
-            try {
-               if (!title || !price || !img) throw new Error("Please fill in all fields");
-               products.push({
-                  title,
-                  category,
-                  price,
-                  img,
-               });
-               localStorage.setItem("products", JSON.stringify(products));
-               readProducts(products);
-            } catch (err) {
-               alert(err);
-            }
-         }
-      }
-   }
 </script>
 
 <style>
