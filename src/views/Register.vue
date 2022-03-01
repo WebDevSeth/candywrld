@@ -21,7 +21,7 @@
       placeholder="Password"
       required
     />
-    <button type="submit" class="form-btn neu-border">Register</button>
+    <button type="submit" class="form-btn">Register</button>
     <!-- <div class="form-social-login">
       <button class="form-btn neu-border form-social-btn">
         <i class="fab fa-google"></i>

@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <router-link class="but" to="/Login">EXIT CANDY WORLD</router-link>
+    <router-link class="but" to="/Login">SIGN OUT</router-link>
   </nav>
   <div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
     <div class="d-flex w-25 ms-3">
@@ -57,15 +57,15 @@
   >
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+   
+          
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-        </div>
+       
         <div class="modal-body">
           <div class="modal-content">
             <div class="modal-body">
@@ -104,8 +104,17 @@
                   id="addImg"
                 />
               </div>
+                 <div class="mb-3">
+                <label for="addImg" class="form-label">Description</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addImg"
+                  id="addImg"
+                />
+              </div>
             </div>
-            <div class="modal-footer">
+         
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -113,6 +122,7 @@
               >
                 Close
               </button>
+              <br>
               <button
                 type="button"
                 class="btn btn-primary"
@@ -121,7 +131,7 @@
               >
                 Create Product
               </button>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -135,29 +145,46 @@
         :key="product._id"
         class="col-lg-4 col-md-6 col-sm-12"
       >
-        <div
-          class="card testimonial-card shadow-5-strong mt-2 mb-3 pt-4 animate__animated animate__jackInTheBox"
-        >
-          <div class="card-up aqua-gradient"></div>
-          <div class="avatar mx-auto white">
-            <img
-              :src="product.img"
-              class="rounded-circle img-fluid test-img"
-              alt="Kagiso"
-            />
+        <div class="card">
+          <img :src="product.img" class="card-img-top" :alt="product.title" />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">R{{ product.price }}</p>
+            <p class="card-text">{{ product.category }}</p>
+            <p class="card-text">{{ product.description }}</p>
+            <div class="d-flex mb-3">
+              <input
+                type="number"
+                class="form-control"
+                value="1"
+                min="1"
+                id="addToCart${position}"
+              />
+              <button
+                type="button"
+                class="btn btn-secondary ms-3"
+                onclick="addToCart(${position})"
+              >
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
           </div>
-          <div class="card-body text-center">
-            <h4 class="card-title font-weight-bold">
-              {{ product.title }}
-            </h4>
-            <hr />
-            <p>
-              <i class="fas fa-quote-left"></i> {{ product.category }}
-              <i class="fas fa-quote-right"></i>
-            </p>
-            <p class="card-text">
-              <small class="text-muted">R{{ product.price }}</small>
-            </p>
+          <div class="d-flex justify-content-end card-footer">
+            <button
+              type="button"
+              class="btn btn-primary w-50"
+              data-bs-toggle="modal"
+              data-bs-target="#editProduct${position}"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger w-50 ms-3"
+              onclick="deleteProduct(${position})"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -218,5 +245,17 @@ export default {
 <style>
 .btn {
   background-color: #5ce1e6 !important;
+}
+
+.card-img-top {
+  max-height: 400px;
+}
+
+.form-select {
+   background-color: white !important;
+}
+
+.form-control {
+   background-color: white !important;
 }
 </style>

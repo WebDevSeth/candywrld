@@ -68,7 +68,7 @@ export default {
           this.$router.push({ name: "Products" });
         })
         .catch((err) => {
-          alert(err);
+          alert("User does not exsist");
         });
     },
   },
@@ -110,6 +110,8 @@ export default {
   outline: none;
   padding: 20px;
   font-size: 25px;
+  border-radius: 30px;
+  box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
 }
 
 .form-btn {
