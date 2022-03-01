@@ -1,4 +1,7 @@
 <template>
+<nav>
+   <router-link class="but" to="/Login">Back to login page</router-link>
+</nav>
   <form @submit.prevent="register" class="form neu-border">
     <input
       class="form-input neu-border-inset"
@@ -12,13 +15,6 @@
       type="email"
       v-model="email"
       placeholder="Email"
-      required
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="contact"
-      placeholder="Contact Number"
       required
     />
     <input

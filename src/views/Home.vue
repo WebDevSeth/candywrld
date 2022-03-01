@@ -3,7 +3,7 @@
     <img class="vulo" alt="Vue logo" src="../assets/WORLD.png" />
   </div>
   <nav>
-    <router-link class="but" to="/login">LOGIN </router-link>
+    <router-link class="but" to="/login">LOGIN <i class="bi bi-box-arrow-in-right"></i></router-link>
   </nav>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <nav>
-    <router-link class="but" to="/">HOME</router-link>
+    <router-link class="but" to="/"
+      >Home </router-link>
   </nav>
 
   <br />
@@ -24,15 +25,6 @@
       <router-link class="form-btn neu-border" to="/Products">
         <button type="submit" class="form-btn">Login</button>
       </router-link>
-
-      <!-- <div class="form-social-login">
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-google"></i>
-      </button>
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-    </div> -->
 
       <p>
         Not a member?
