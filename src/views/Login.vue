@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <router-link class="but" to="/"
-      >Home </router-link>
+    <router-link class="but" to="/">HOME</router-link>
   </nav>
 
   <br />
@@ -15,16 +14,25 @@
         type="email"
         v-model="email"
         placeholder="Email"
+        required
       />
       <input
         class="form-input neu-border-inset"
         type="password"
         v-model="password"
         placeholder="Password"
+        required
       />
-      <router-link class="form-btn neu-border" to="/Products">
-        <button type="submit" class="form-btn">Login</button>
-      </router-link>
+      <button type="submit" class="form-btn">Login</button>
+
+      <!-- <div class="form-social-login">
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-google"></i>
+      </button>
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div> -->
 
       <p>
         Not a member?
@@ -43,7 +51,7 @@ export default {
   },
   methods: {
     login() {
-      fetch("https://generic-blog-api.herokuapp.com/users", {
+      fetch("https://pos-bkend.herokuapp.com/users/", {
         method: "PATCH",
         body: JSON.stringify({
           email: this.email,
@@ -57,7 +65,7 @@ export default {
         .then((json) => {
           localStorage.setItem("jwt", json.jwt);
           alert("User logged in");
-          this.$router.push({ name: "Blogs" });
+          this.$router.push({ name: "Products" });
         })
         .catch((err) => {
           alert(err);
