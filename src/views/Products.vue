@@ -41,7 +41,15 @@
     >
       Add a product
     </button>
-    <button type="button" class="btn btn-primary">Cart</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal2"
+    >
+      Update user <i class="bi bi-person-circle"></i>
+    </button>
+   <router-link class="btn btn-primary" to="/Cart">Cart</router-link> 
   </div>
   <br />
   <hr />
@@ -57,15 +65,13 @@
   >
     <div class="modal-dialog">
       <div class="modal-content">
-   
-          
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-       
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+
         <div class="modal-body">
           <div class="modal-content">
             <div class="modal-body">
@@ -104,7 +110,7 @@
                   id="addImg"
                 />
               </div>
-                 <div class="mb-3">
+              <div class="mb-3">
                 <label for="addImg" class="form-label">Description</label>
                 <input
                   class="form-control"
@@ -114,29 +120,192 @@
                 />
               </div>
             </div>
-         
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <br>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-dismiss="modal"
-                onclick="createProduct()"
-              >
-                Create Product
-              </button>
-            
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <br />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="createProduct()"
+            >
+              Create Product
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- modal2 -->
+
+  <div
+    class="modal fade"
+    id="exampleModal2"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+
+        <div class="modal-body">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="addTitle" class="form-label">Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addTitle"
+                  id="addTitle"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="addPrice" class="form-label">Email</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addPrice"
+                  id="addPrice"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="addImg" class="form-label">Password</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addImg"
+                  id="addImg"
+                />
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <br />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="createProduct()"
+            >
+              Update User
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- modal3 -->
+
+  <div
+    class="modal fade"
+    id="exampleModal3"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+
+        <div class="modal-body">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="addTitle" class="form-label">Title</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addTitle"
+                  id="addTitle"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">Category</label>
+                <select class="form-select" name="addCategory" id="addCategory">
+                  <option value="Snacks">Snacks</option>
+                  <option value="Sweets">Sweets</option>
+                  <option value="Drink">Drink</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="addPrice" class="form-label">Price</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addPrice"
+                  id="addPrice"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="addImg" class="form-label">Image URL</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addImg"
+                  id="addImg"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="addImg" class="form-label">Description</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="addImg"
+                  id="addImg"
+                />
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <br />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="createProduct()"
+            >
+              Edit Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="container my-5">
     <div v-if="products.length" class="row">
@@ -162,7 +331,7 @@
               />
               <button
                 type="button"
-                class="btn btn-secondary ms-3"
+                class="btn2"
                 onclick="addToCart(${position})"
               >
                 <i class="fas fa-cart-plus"></i>
@@ -171,10 +340,10 @@
           </div>
           <div class="d-flex justify-content-end card-footer">
             <button
-              type="button"
-              class="btn btn-primary w-50"
-              data-bs-toggle="modal"
-              data-bs-target="#editProduct${position}"
+             type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal3"
             >
               Edit
             </button>
@@ -240,6 +409,8 @@ export default {
     }
   },
 };
+
+
 </script>
 
 <style>
@@ -247,15 +418,56 @@ export default {
   background-color: #5ce1e6 !important;
 }
 
+.btn2 {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-top: 0 !important;
+  padding: 10px !important;
+}
+
 .card-img-top {
   max-height: 400px;
 }
 
 .form-select {
-   background-color: white !important;
+  background-color: white !important;
 }
 
 .form-control {
-   background-color: white !important;
+  background-color: white !important;
+  widows: 100% !important;
+}
+
+.card-body {
+  background-color: white !important;
+}
+
+.card-title {
+  background-color: white !important;
+}
+
+.card-text {
+  background-color: white !important;
+}
+
+.bi {
+  background-color: #5CE1E6!important;
+}
+
+.fas {
+  background-color: #5CE1E6!important;
+}
+
+.card-footer {
+  background-color: white !important;
+}
+
+.card {
+  margin: 10px !important;
+}
+
+.fas {
+  background-color: #FF66C4 !important;
 }
 </style>
