@@ -3,7 +3,7 @@
     <input
       class="form-input neu-border-inset"
       type="text"
-      v-model="name"
+      v-model="fullname"
       placeholder="Name"
       required
     />
@@ -12,6 +12,13 @@
       type="email"
       v-model="email"
       placeholder="Email"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="phone_number"
+      placeholder="Contact"
       required
     />
     <input
@@ -41,9 +48,9 @@
 export default {
   data() {
     return {
-      name: "",
+      fullname: "",
       email: "",
-      contact: "",
+      phone_number: "",
       password: "",
     };
   },
@@ -52,9 +59,9 @@ export default {
       fetch("https://pos-bkend.herokuapp.com/users", {
         method: "POST",
         body: JSON.stringify({
-          name: this.name,
+          fullname: this.fullname,
           email: this.email,
-          contact: this.contact,
+          phone_number: this.phone_number,
           password: this.password,
         }),
         headers: {

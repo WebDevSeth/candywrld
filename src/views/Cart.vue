@@ -6,14 +6,7 @@
   <div class="card mb-3 w-100 position-relative">
     <button
       type="button"
-      class="
-        position-absolute
-        top-0
-        start-100
-        translate-middle
-        badge
-        btn btn-danger
-      "
+      class="position-absolute top-0 start-100 translate-middle badge btn btn-danger"
       onclick="removeFromCart(${position})"
     >
       X
@@ -43,10 +36,10 @@
             class="card-footer bg-white d-flex justify-content-between p-0 pt-3"
           >
             <p>Total Cost:</p>
-            <span
+            <!-- <span
               >R{( parseFloat(product.price) * parseInt(product.qty)
               ).toFixed(2)}</span
-            >
+            > -->
           </div>
         </div>
       </div>
@@ -54,9 +47,6 @@
   </div>
 </template>
 
+<script></script>
 
-<script>
-</script>
-
-<style>
-</style>
+<style></style>

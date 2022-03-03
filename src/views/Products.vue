@@ -49,7 +49,7 @@
     >
       Update user <i class="bi bi-person-circle"></i>
     </button>
-   <router-link class="btn btn-primary" to="/Cart">Cart</router-link> 
+    <router-link class="btn btn-primary" to="/Cart">Cart</router-link>
   </div>
   <br />
   <hr />
@@ -82,11 +82,17 @@
                   type="text"
                   name="addTitle"
                   id="addTitle"
+                  v-model="title"
                 />
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Category</label>
-                <select class="form-select" name="addCategory" id="addCategory">
+                <select
+                  class="form-select"
+                  name="addCategory"
+                  id="addCategory"
+                  v-model="category"
+                >
                   <option value="Snacks">Snacks</option>
                   <option value="Sweets">Sweets</option>
                   <option value="Drink">Drink</option>
@@ -99,6 +105,7 @@
                   type="text"
                   name="addPrice"
                   id="addPrice"
+                  v-model="price"
                 />
               </div>
               <div class="mb-3">
@@ -108,15 +115,19 @@
                   type="text"
                   name="addImg"
                   id="addImg"
+                  v-model="img"
                 />
               </div>
               <div class="mb-3">
-                <label for="addImg" class="form-label">Description</label>
+                <label for="addDescription" class="form-label"
+                  >Description</label
+                >
                 <input
                   class="form-control"
                   type="text"
-                  name="addImg"
-                  id="addImg"
+                  name="addDescription"
+                  id="addDescription"
+                  v-model="description"
                 />
               </div>
             </div>
@@ -133,7 +144,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              onclick="createProduct()"
+              @click="createProduct()"
             >
               Create Product
             </button>
@@ -165,30 +176,45 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="mb-3">
-                <label for="addTitle" class="form-label">Name</label>
+                <label for="addFullname" class="form-label">Fullname</label>
                 <input
                   class="form-control"
                   type="text"
-                  name="addTitle"
-                  id="addTitle"
+                  name="addFullname"
+                  id="addFullname"
+                  v-model="fullname"
                 />
               </div>
               <div class="mb-3">
-                <label for="addPrice" class="form-label">Email</label>
+                <label for="addEmail" class="form-label">Email</label>
                 <input
                   class="form-control"
-                  type="text"
-                  name="addPrice"
-                  id="addPrice"
+                  type="email"
+                  name="addEmail"
+                  id="addEmail"
+                  v-model="email"
                 />
               </div>
               <div class="mb-3">
-                <label for="addImg" class="form-label">Password</label>
+                <label for="addPhone_number" class="form-label"
+                  >Phone_number</label
+                >
                 <input
                   class="form-control"
                   type="text"
-                  name="addImg"
-                  id="addImg"
+                  name="addPhone_number"
+                  id="addPhone_number"
+                  v-model="phone_number"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="addPassword" class="form-label">Password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  name="addPassword"
+                  id="addPassword"
+                  v-model="password"
                 />
               </div>
             </div>
@@ -205,7 +231,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              onclick="createProduct()"
+              @click="updateUser()"
             >
               Update User
             </button>
@@ -214,8 +240,6 @@
       </div>
     </div>
   </div>
-
-
 
   <!-- modal3 -->
 
@@ -245,11 +269,17 @@
                   type="text"
                   name="addTitle"
                   id="addTitle"
+                  v-model="title"
                 />
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Category</label>
-                <select class="form-select" name="addCategory" id="addCategory">
+                <select
+                  class="form-select"
+                  name="addCategory"
+                  id="addCategory"
+                  v-model="category"
+                >
                   <option value="Snacks">Snacks</option>
                   <option value="Sweets">Sweets</option>
                   <option value="Drink">Drink</option>
@@ -262,6 +292,7 @@
                   type="text"
                   name="addPrice"
                   id="addPrice"
+                  v-model="price"
                 />
               </div>
               <div class="mb-3">
@@ -271,15 +302,19 @@
                   type="text"
                   name="addImg"
                   id="addImg"
+                  v-model="img"
                 />
               </div>
               <div class="mb-3">
-                <label for="addImg" class="form-label">Description</label>
+                <label for="addDescription" class="form-label"
+                  >Description</label
+                >
                 <input
                   class="form-control"
                   type="text"
-                  name="addImg"
-                  id="addImg"
+                  name="addDescription"
+                  id="addDescription"
+                  v-model="description"
                 />
               </div>
             </div>
@@ -296,7 +331,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              onclick="createProduct()"
+              @click="updateProduct()"
             >
               Edit Product
             </button>
@@ -306,11 +341,11 @@
     </div>
   </div>
 
-
   <div class="container my-5">
+    <input type="text" v-model="search" />
     <div v-if="products.length" class="row">
       <div
-        v-for="product of products"
+        v-for="product of filterProducts"
         :key="product._id"
         class="col-lg-4 col-md-6 col-sm-12"
       >
@@ -321,6 +356,7 @@
             <p class="card-text">R{{ product.price }}</p>
             <p class="card-text">{{ product.category }}</p>
             <p class="card-text">{{ product.description }}</p>
+            <p class="card-text">{{ product._id }}</p>
             <div class="d-flex mb-3">
               <input
                 type="number"
@@ -329,28 +365,24 @@
                 min="1"
                 id="addToCart${position}"
               />
-              <button
-                type="button"
-                class="btn2"
-                onclick="addToCart(${position})"
-              >
+              <button type="button" class="btn2" @click="addToCart()">
                 <i class="fas fa-cart-plus"></i>
               </button>
             </div>
           </div>
           <div class="d-flex justify-content-end card-footer">
             <button
-             type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal3"
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal3"
             >
               Edit
             </button>
             <button
               type="button"
               class="btn btn-danger w-50 ms-3"
-              onclick="deleteProduct(${position})"
+              @click="deleteProduct()"
             >
               Delete
             </button>
@@ -369,6 +401,15 @@ export default {
   data() {
     return {
       products: [],
+      fullname: "",
+      email: "",
+      password: "",
+      title: "",
+      category: "",
+      description: "",
+      img: "",
+      price: "",
+      search: "",
     };
   },
   mounted() {
@@ -383,22 +424,6 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           this.products = json;
-          this.products.forEach(async (product) => {
-            await fetch(
-              "https://pos-bkend.herokuapp.com/products/ " + product.created_by,
-              {
-                method: "GET",
-                headers: {
-                  "Content-type": "application/json; charset=UTF-8",
-                  Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-                },
-              }
-            )
-              .then((response) => response.json())
-              .then((json) => {
-                product.created_by = json.title;
-              });
-          });
         })
         .catch((err) => {
           alert("User not logged in");
@@ -408,9 +433,124 @@ export default {
       this.$router.push({ name: "Login" });
     }
   },
+  computed: {
+    filterProducts: function () {
+      return this.products.filter((product) => {
+        return product.category.match(this.search);
+      });
+    },
+  },
+  methods: {
+    // Create Product
+    createProduct() {
+      if (!localStorage.getItem("jwt")) {
+        alert("User not logged in");
+        return this.$router.push({ name: "Login" });
+      }
+      fetch("https://pos-bkend.herokuapp.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          title: this.title,
+          description: this.description,
+          category: this.category,
+          price: this.price,
+          img: this.img,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Created");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+    // Update Product
+    updateProduct() {
+      if (!localStorage.getItem("jwt")) {
+        alert("User not logged in");
+        return this.$router.push({ name: "Login" });
+      }
+      fetch("https://pos-bkend.herokuapp.com/products" + this._id, {
+        method: "PUT",
+        body: JSON.stringify({
+          title: this.title,
+          category: this.category,
+          description: this.description,
+          img: this.img,
+          price: this.price,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("User Updated");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+    // // Update User
+    updateUser() {
+      if (!localStorage.getItem("jwt")) {
+        alert("User not logged in");
+        return this.$router.push({ name: "Login" });
+      }
+      fetch("https://pos-bkend.herokuapp.com/users" + this.id, {
+        method: "PUT",
+        body: JSON.stringify({
+          fullname: this.fullname,
+          email: this.email,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("User Updated");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+
+    // // Delete Product
+    deleteProduct() {
+      if (!localStorage.getItem("jwt")) {
+        alert("User not logged in");
+        return this.$router.push({ name: "Login" });
+      }
+      fetch("https://pos-bkend.herokuapp.com/products/" + this._id, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Deleted");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
 };
-
-
 </script>
 
 <style>
@@ -452,11 +592,11 @@ export default {
 }
 
 .bi {
-  background-color: #5CE1E6!important;
+  background-color: #5ce1e6 !important;
 }
 
 .fas {
-  background-color: #5CE1E6!important;
+  background-color: #5ce1e6 !important;
 }
 
 .card-footer {
@@ -468,6 +608,6 @@ export default {
 }
 
 .fas {
-  background-color: #FF66C4 !important;
+  background-color: #ff66c4 !important;
 }
 </style>
