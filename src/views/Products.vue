@@ -379,12 +379,18 @@
             >
               Edit
             </button>
-            <button
+            <!-- <button
               type="button"
               class="btn btn-danger w-50 ms-3"
               @click="deleteProduct()"
             >
               Delete
+            </button> -->
+            <button
+              @click.prevent="deleteProduct(product._id)"
+              class="btn btn-danger"
+            >
+              DELETE
             </button>
           </div>
         </div>
@@ -397,6 +403,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -440,6 +447,7 @@ export default {
       });
     },
   },
+
   methods: {
     // Create Product
     createProduct() {
@@ -470,20 +478,21 @@ export default {
           alert(err);
         });
     },
+
     // Update Product
     updateProduct() {
       if (!localStorage.getItem("jwt")) {
         alert("User not logged in");
         return this.$router.push({ name: "Login" });
       }
-      fetch("https://pos-bkend.herokuapp.com/products" + this._id, {
+      fetch("https://pos-bkend.herokuapp.com/products" + this._idv, {
         method: "PUT",
         body: JSON.stringify({
           title: this.title,
-          category: this.category,
           description: this.description,
-          img: this.img,
+          category: this.category,
           price: this.price,
+          img: this.img,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -492,7 +501,7 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("User Updated");
+          alert("Product Created");
           this.$router.push({ name: "Products" });
         })
         .catch((err) => {
@@ -528,26 +537,48 @@ export default {
     },
 
     // // Delete Product
-    deleteProduct() {
-      if (!localStorage.getItem("jwt")) {
-        alert("User not logged in");
-        return this.$router.push({ name: "Login" });
-      }
-      fetch("https://pos-bkend.herokuapp.com/products/" + this._id, {
-        method: "DELETE",
+    // deleteProduct() {
+    //   if (!localStorage.getItem("jwt")) {
+    //     alert("User not logged in");
+    //     return this.$router.push({ name: "Login" });
+    //   }
+    //   fetch("https://pos-bkend.herokuapp.com/products/" + this._id, {
+    //     method: "DELETE",
+    //     headers: {
+    //       "Content-type": "application/json; charset=UTF-8",
+    //       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    //     },
+    //   })
+    //     .then((response) => response.json())
+    //     .then((json) => {
+    //       alert("Product Deleted");
+    //       this.$router.push({ name: "Products" });
+    //     })
+    //     .catch((err) => {
+    //       alert(err);
+    //     });
+    // },
+    deleteProduct(id) {
+      const config = {
         headers: {
           "Content-type": "application/json; charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          alert("Product Deleted");
-          this.$router.push({ name: "Products" });
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      };
+      let apiURL = `https://pos-bkend.herokuapp.com/products//${id}`;
+
+      let indexOfArrayItem = this.products.findIndex((i) => i._id === id);
+
+      if (window.confirm("Do you really want to delete?")) {
+        axios
+          .delete(apiURL, config)
+          .then(() => {
+            this.products.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
 };
